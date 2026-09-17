@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Syntax check
+        run: python -m py_compile mdeob.py build_bundle.py
+
+      - name: Import + version
+        run: python -c "import mdeob; print(mdeob.NAME, mdeob.VERSION)"
+
+      - name: CLI smoke test
+        run: |
+          python mdeob.py --help
+          python mdeob.py analyze --help
+          python mdeob.py deob --help
+
+      - name: Bundled dist is in sync with source
+        run: |
+          python build_bundle.py
+          git diff --exit-code -- mdeob_dist.py

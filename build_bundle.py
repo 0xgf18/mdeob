@@ -33,7 +33,7 @@ def main():
         sys.exit(1)
     dist = src.replace("BUNDLED = {}", filled, 1)
 
-    with open(OUT, "w", encoding="utf-8") as f:
+    with open(OUT, "w", encoding="utf-8", newline="\n") as f:
         f.write(dist)
 
     sizes = {os.path.basename(p): os.path.getsize(p) for p in RES.values()

@@ -1,6 +1,7 @@
 # Ignore everything by default, then whitelist just the tool itself.
 /*
 !/.gitignore
+!/.github/
 !/README.md
 !/mdeob.py
 !/build_bundle.py
