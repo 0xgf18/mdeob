@@ -3,6 +3,7 @@
 !/.gitignore
 !/.github/
 !/README.md
+!/run.sh
 !/mdeob.py
 !/build_bundle.py
 !/mdeob_dist.py

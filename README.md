@@ -10,6 +10,20 @@ A single-file, Termux-friendly APK deobfuscation toolkit. It can:
 
 `analyze` is **stdlib-only**. The `deob` / `rebuild` / `sign` commands need a Java runtime.
 
+## Install (Termux)
+
+```bash
+pkg install python openjdk-17 unzip
+termux-setup-storage                 # allow /sdcard access
+
+git clone https://github.com/0xgf18/mdeob
+cd mdeob
+chmod +x run.sh && ./run.sh           # prints help
+./run.sh /sdcard/Download/app.apk     # full pipeline, all steps automatic
+```
+
+Output is written to `/sdcard/Download/deobfuscated/`.
+
 ## Quick start
 
 Everything is bundled into one file, `mdeob_dist.py` (it embeds `smali.jar`,
@@ -27,13 +41,10 @@ That runs the full pipeline with every step enabled and writes:
 /sdcard/Download/deobfuscated/deobfuscation_report.json
 ```
 
-### Termux
+`analyze` is stdlib-only and needs no Java:
 
 ```bash
-pkg install python openjdk-17
-termux-setup-storage
-# copy mdeob_dist.py to the device, then:
-python3 mdeob_dist.py /sdcard/Download/app.apk
+./run.sh analyze /sdcard/Download/app.apk --json report.json
 ```
 
 ### Full CLI
