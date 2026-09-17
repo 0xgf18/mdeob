@@ -1,0 +1,16 @@
+# Ignore everything by default, then whitelist just the tool itself.
+/*
+!/.gitignore
+!/README.md
+!/mdeob.py
+!/build_bundle.py
+!/mdeob_dist.py
+!/baksmali.jar
+!/smali.jar
+!/apksigner.jar
+!/mdeob.keystore
+
+# always ignore
+runtime/
+__pycache__/
+*.pyc
